@@ -45,7 +45,7 @@ export default function DoctorDashboardPage() {
         <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4">
           <AlarmClock className="w-10 h-10 text-blue-600" />
           <div>
-            <h3 className="text-md font-medium text-gray-500">Today's Appointments</h3>
+            <h3 className="text-md font-medium text-gray-500">Today&apos;s Appointments</h3>
             <p className="text-2xl font-bold text-blue-600">5</p>
           </div>
         </div>

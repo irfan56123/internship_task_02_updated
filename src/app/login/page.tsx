@@ -108,7 +108,7 @@ export default function LoginPage() {
 
           {/* Signup prompt */}
           <p className="mt-4 text-sm text-center">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a className="text-blue-600 underline" href="/signup">
               Signup
             </a>
