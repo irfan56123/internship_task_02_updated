@@ -1,0 +1,30 @@
+{
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. Irfan Ahmad",
+      "email": "irfan@clinic.com",
+      "specialization": "Cardiologist",
+      "experience": "7+ years",
+      "education": "MBBS, MD",
+      "profilePicture": "https://i.pravatar.cc/150?img=12"
+    }
+  ],
+  "appointments": [ 
+    {
+      "id": 1,
+      "patientName": "Amit Sharma",
+      "date": "2025-07-28",
+      "time": "10:00 AM",
+      "status": "pending"
+    },
+    {
+      "id": 2,
+      "patientName": "Priya Verma",
+      "date": "2025-07-29",
+      "time": "2:30 PM",
+      "status": "pending"
+    }
+],
+  "patients": []
+}
