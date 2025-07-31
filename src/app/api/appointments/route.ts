@@ -1,4 +1,7 @@
-export const appointments = [
+// src/app/api/appointments/route.ts
+import { NextResponse } from 'next/server';
+
+const appointments = [
   {
     id: 'apt1',
     patientName: 'Rohit Sharma',
@@ -54,3 +57,7 @@ export const appointments = [
     reason: 'Dental Pain',
   },
 ];
+
+export async function GET() {
+  return NextResponse.json(appointments);
+}

@@ -17,17 +17,27 @@ export default function LoginPage() {
     }
   }, [router]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const validEmail = "irfan@gmail.com";
-    const validPassword = "123456";
+    setError("");
 
-    if (email === validEmail && password === validPassword) {
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!res.ok) throw new Error("Invalid credentials");
+
       if (remember) {
         localStorage.setItem("isLoggedIn", "true");
       }
+
       router.push("/doctor/dashboard");
-    } else {
+    } catch (err) {
       setError("Invalid email or password");
     }
   };
@@ -82,7 +92,7 @@ export default function LoginPage() {
             />
           </div>
 
-          {/* Remember Me & Forgot Password */}
+          {/* Remember Me */}
           <div className="flex items-center justify-between mb-6 text-sm">
             <label className="flex items-center text-gray-700 gap-2">
               <input

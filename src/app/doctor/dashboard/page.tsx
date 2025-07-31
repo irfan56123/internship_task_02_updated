@@ -1,37 +1,34 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AppointmentCard from '../../../components/appointmentCard';
 import { CalendarDays, CreditCard, AlarmClock, ClipboardList } from 'lucide-react';
 
-const appointments = [
-  {
-    patientName: 'John Doe',
-     reason: "General checkup",
-    date: '2025-07-27',
-    time: '10:30 AM',
-    status: 'pending',
-   
-  },
-  {
-    patientName: 'Jane Smith',
-     reason: "General checkup",
-    date: '2025-07-28',
-    time: '12:00 PM',
-    status: 'confirmed',
-   
-  },
-  {
-    patientName: 'Alex Roy',
-     reason: "General checkup",
-    date: '2025-07-29',
-    time: '2:00 PM',
-    status: 'cancelled',
-   
-  },
-];
+interface Appointment {
+  patientName: string;
+  reason: string;
+  date: string;
+  time: string;
+  status: string;
+}
 
 export default function DoctorDashboardPage() {
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
+
+  useEffect(() => {
+    const fetchAppointments = async () => {
+      try {
+        const res = await fetch('/api/dashboard-appointments');
+        const data = await res.json();
+        setAppointments(data);
+      } catch (error) {
+        console.error('Error fetching dashboard appointments:', error);
+      }
+    };
+
+    fetchAppointments();
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Dashboard Heading */}
@@ -78,7 +75,7 @@ export default function DoctorDashboardPage() {
           </div>
         </div>
 
-        {/* Payment Details */}
+        {/* Payment Details (unchanged) */}
         <div className="bg-white rounded-2xl shadow-md p-6">
           <div className="flex items-center gap-2 mb-4">
             <CreditCard className="text-purple-600 w-6 h-6" />
@@ -86,41 +83,19 @@ export default function DoctorDashboardPage() {
           </div>
 
           <div className="space-y-3 text-sm text-gray-700">
-            <div className="flex justify-between">
-              <span>Last Payment</span>
-              <span>24 July 2025</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Total Earnings</span>
-              <span className="font-semibold text-green-600">₹12,500</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Pending Amount</span>
-              <span className="font-semibold text-red-500">₹2,000</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Payment Method</span>
-              <span>Bank Transfer</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Next Payout</span>
-              <span>31 July 2025</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Paid Appointments</span>
-              <span>28</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Bank Account</span>
-              <span>****5678</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Tax Deducted</span>
-              <span className="text-yellow-600">₹1,200</span>
-            </div>
+            {/* Same payment detail code */}
+            <div className="flex justify-between"><span>Last Payment</span><span>24 July 2025</span></div>
+            <div className="flex justify-between"><span>Total Earnings</span><span className="font-semibold text-green-600">₹12,500</span></div>
+            <div className="flex justify-between"><span>Pending Amount</span><span className="font-semibold text-red-500">₹2,000</span></div>
+            <div className="flex justify-between"><span>Payment Method</span><span>Bank Transfer</span></div>
+            <div className="flex justify-between"><span>Next Payout</span><span>31 July 2025</span></div>
+            <div className="flex justify-between"><span>Paid Appointments</span><span>28</span></div>
+            <div className="flex justify-between"><span>Bank Account</span><span>****5678</span></div>
+            <div className="flex justify-between"><span>Tax Deducted</span><span className="text-yellow-600">₹1,200</span></div>
           </div>
         </div>
       </main>
     </div>
   );
 }
+

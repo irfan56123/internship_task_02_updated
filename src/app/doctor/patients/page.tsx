@@ -1,51 +1,39 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
-
-// Dummy patient data
-const patients = [
-  {
-    id: 1,
-    name: 'Ayesha Khan',
-    age: 28,
-    gender: 'Female',
-    contact: '9876543210',
-    appointmentDate: '2025-07-28',
-  },
-  {
-    id: 2,
-    name: 'Rahul Verma',
-    age: 35,
-    gender: 'Male',
-    contact: '9123456780',
-    appointmentDate: '2025-07-24',
-  },
-  {
-    id: 3,
-    name: 'Sana Sheikh',
-    age: 41,
-    gender: 'Female',
-    contact: '9988776655',
-    appointmentDate: '2025-08-02',
-  },
-  {
-    id: 4,
-    name: 'Aman Patel',
-    age: 30,
-    gender: 'Male',
-    contact: '9876541230',
-    appointmentDate: '2025-07-20',
-  },
-];
 
 const Tabs = ['All', 'Upcoming', 'Past'];
 
+interface Patient {
+  id: number;
+  name: string;
+  age: number;
+  gender: string;
+  contact: string;
+  appointmentDate: string;
+}
+
 export default function PatientsPage() {
+  const [patients, setPatients] = useState<Patient[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('All');
 
   const today = dayjs().startOf('day');
+
+  useEffect(() => {
+    const fetchPatients = async () => {
+      try {
+        const res = await fetch('/api/patients');
+        const data = await res.json();
+        setPatients(data);
+      } catch (error) {
+        console.error('Failed to fetch patients:', error);
+      }
+    };
+
+    fetchPatients();
+  }, []);
 
   const filteredPatients = patients
     .filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -102,7 +90,9 @@ export default function PatientsPage() {
               <p className="text-sm text-gray-600">Contact: {patient.contact}</p>
               <p className="text-sm text-gray-600">
                 Appointment:{' '}
-                <span className="font-medium">{dayjs(patient.appointmentDate).format('DD MMM YYYY')}</span>
+                <span className="font-medium">
+                  {dayjs(patient.appointmentDate).format('DD MMM YYYY')}
+                </span>
               </p>
             </div>
           ))

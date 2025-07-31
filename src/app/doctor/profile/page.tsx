@@ -1,9 +1,38 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { FaEnvelope, FaPhone, FaUserMd, FaGraduationCap, FaCalendarAlt } from 'react-icons/fa';
 
+interface DoctorProfile {
+  name: string;
+  specialization: string;
+  education: string;
+  experience: string;
+  email: string;
+  phone: string;
+  image: string;
+}
+
 export default function DoctorProfilePage() {
+  const [profile, setProfile] = useState<DoctorProfile | null>(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const res = await fetch('/api/doctor-profile');
+        const data = await res.json();
+        setProfile(data);
+      } catch (err) {
+        console.error('Failed to load profile:', err);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  if (!profile) return <p className="p-6 text-gray-500">Loading profile...</p>;
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
@@ -11,7 +40,7 @@ export default function DoctorProfilePage() {
           {/* Left: Profile Photo */}
           <div className="md:w-1/3 bg-blue-600 flex justify-center items-center p-6">
             <Image
-              src="/doctor.jpg"
+              src={profile.image}
               alt="Doctor Profile"
               width={150}
               height={150}
@@ -21,27 +50,27 @@ export default function DoctorProfilePage() {
 
           {/* Right: Doctor Info */}
           <div className="md:w-2/3 p-6">
-            <h2 className="text-3xl font-bold text-gray-800 mb-1">Dr. Irfan Ahmad</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-1">{profile.name}</h2>
             <p className="text-blue-600 flex items-center gap-2 text-sm font-medium">
-              <FaUserMd /> Cardiologist
+              <FaUserMd /> {profile.specialization}
             </p>
 
             <div className="mt-4 space-y-3 text-gray-700 text-sm">
               <p className="flex items-center gap-2">
                 <FaGraduationCap className="text-blue-500" />
-                <strong>Education:</strong> MBBS, MD (Cardiology)
+                <strong>Education:</strong> {profile.education}
               </p>
               <p className="flex items-center gap-2">
                 <FaCalendarAlt className="text-blue-500" />
-                <strong>Experience:</strong> 12+ years
+                <strong>Experience:</strong> {profile.experience}
               </p>
               <p className="flex items-center gap-2">
                 <FaEnvelope className="text-blue-500" />
-                <strong>Email:</strong> sameer.verma@example.com
+                <strong>Email:</strong> {profile.email}
               </p>
               <p className="flex items-center gap-2">
                 <FaPhone className="text-blue-500" />
-                <strong>Phone:</strong> +91-9876543210
+                <strong>Phone:</strong> {profile.phone}
               </p>
             </div>
 

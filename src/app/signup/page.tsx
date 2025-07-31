@@ -1,10 +1,10 @@
-
 "use client";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type SignupFormData = {
   name: string;
@@ -23,6 +23,10 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function DoctorSignupPage() {
+  const router = useRouter();
+  const [serverError, setServerError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
   const {
     register,
     handleSubmit,
@@ -31,10 +35,19 @@ export default function DoctorSignupPage() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data: SignupFormData) => {
-    console.log("Signup Data:", data);
-    // TODO: Replace with API call
-    alert("Signup successful!");
+  const onSubmit = async (data: SignupFormData) => {
+    setServerError("");
+    try {
+      console.log("Submitted Data:", data); // simulate logging to console
+
+      // simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      setSuccessMessage("Signup successful! Redirecting to login...");
+      setTimeout(() => router.push("/login"), 2000);
+    } catch (err: any) {
+      setServerError("Something went wrong");
+    }
   };
 
   return (
@@ -43,6 +56,9 @@ export default function DoctorSignupPage() {
         <h2 className="text-2xl font-semibold mb-6 text-center">Doctor Signup</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          {serverError && <p className="text-red-500 text-sm text-center">{serverError}</p>}
+          {successMessage && <p className="text-green-600 text-sm text-center">{successMessage}</p>}
+
           <div>
             <label className="block mb-1 font-medium">Full Name</label>
             <input {...register("name")} className="w-full border border-gray-300 p-2 rounded" />
@@ -79,7 +95,11 @@ export default function DoctorSignupPage() {
           >
             Sign Up
           </button>
-          <div> <p className="mt-2 ml-2 text-bold">Already have an account ? <a className="underline text-blue-600 " href="/login">Login</a></p></div>
+
+          <p className="mt-2 text-sm text-center">
+            Already have an account?{" "}
+            <a className="text-blue-600 underline" href="/login">Login</a>
+          </p>
         </form>
       </div>
     </div>

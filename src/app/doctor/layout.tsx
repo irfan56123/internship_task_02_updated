@@ -4,14 +4,13 @@ import { ReactNode } from 'react';
 import Link from 'next/link';
 import { Menu, X, LayoutDashboard, User, CalendarCheck, Users, LogOut } from 'lucide-react';
 import { Disclosure } from '@headlessui/react';
-import LogoutButton from '../../components/logoutbutton'
+import LogoutButton from '../../components/logoutbutton';
 
 const navigation = [
   { name: 'Dashboard', href: '/doctor/dashboard', icon: <LayoutDashboard className="w-5 h-5 mr-2" /> },
   { name: 'Profile', href: '/doctor/profile', icon: <User className="w-5 h-5 mr-2" /> },
   { name: 'Appointments', href: '/doctor/appointments', icon: <CalendarCheck className="w-5 h-5 mr-2" /> },
   { name: 'Patients', href: '/doctor/patients', icon: <Users className="w-5 h-5 mr-2" /> },
- 
 ];
 
 export default function DoctorLayout({ children }: { children: ReactNode }) {
@@ -22,7 +21,7 @@ export default function DoctorLayout({ children }: { children: ReactNode }) {
         <div className="mb-10">
           <h2 className="text-2xl font-bold">Dr. Portal</h2>
         </div>
-        <nav className="flex flex-col gap-4">
+        <nav className="flex flex-col gap-4 flex-1">
           {navigation.map((item) => (
             <Link
               key={item.name}
@@ -34,6 +33,9 @@ export default function DoctorLayout({ children }: { children: ReactNode }) {
             </Link>
           ))}
         </nav>
+        <div className="mt-6">
+          <LogoutButton />
+        </div>
       </aside>
 
       {/* Mobile Nav */}
@@ -58,6 +60,9 @@ export default function DoctorLayout({ children }: { children: ReactNode }) {
                   {item.name}
                 </Link>
               ))}
+              <div className="px-4 py-2">
+                <LogoutButton />
+              </div>
             </Disclosure.Panel>
           </>
         )}
@@ -68,6 +73,7 @@ export default function DoctorLayout({ children }: { children: ReactNode }) {
     </div>
   );
 }
+
 
 
 
