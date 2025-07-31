@@ -45,7 +45,7 @@ export default function DoctorSignupPage() {
 
       setSuccessMessage("Signup successful! Redirecting to login...");
       setTimeout(() => router.push("/login"), 2000);
-    } catch (err: any) {
+    } catch (err) {
       setServerError("Something went wrong");
     }
   };
