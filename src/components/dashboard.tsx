@@ -30,7 +30,7 @@ export default function DashboardLayout({
       className="w-10 h-10 rounded-full border"
     />
     <div className="text-right">
-      <p className="text-sm font-medium text-gray-800">Dr. Irfan Ahmad</p>
+      <p className="text-sm font-medium text-gray-800">Dr. Anil Kumar Gupta</p>
       <p className="text-xs text-gray-500">Cardiologist</p>
     </div>
   

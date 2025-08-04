@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import AppointmentCard from '../../../components/appointmentCard';
+import DoctorCalendar from '../../../components/DoctorCalendar';
 import { CalendarDays, CreditCard, AlarmClock, ClipboardList } from 'lucide-react';
 
 interface Appointment {
@@ -42,7 +43,7 @@ export default function DoctorDashboardPage() {
         <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4">
           <AlarmClock className="w-10 h-10 text-blue-600" />
           <div>
-            <h3 className="text-md font-medium text-gray-500">Today&apos;s Appointments</h3>
+            <h3 className="text-md font-medium text-gray-500">Today's Appointments</h3>
             <p className="text-2xl font-bold text-blue-600">5</p>
           </div>
         </div>
@@ -62,7 +63,12 @@ export default function DoctorDashboardPage() {
             <p className="text-2xl font-bold text-blue-600">3</p>
           </div>
         </div>
-
+             </main>
+      {/* Calendar Section */}
+      <div className="bg-white rounded-2xl shadow-md p-6 mt-6">
+        <h2 className="text-xl font-semibold text-gray-800 mb-4">📆 Calendar View</h2>
+        <DoctorCalendar />
+      </div>
         {/* Appointments Section */}
         <div className="lg:col-span-2">
           <div className="bg-white rounded-2xl shadow-md p-6">
@@ -75,7 +81,7 @@ export default function DoctorDashboardPage() {
           </div>
         </div>
 
-        {/* Payment Details (unchanged) */}
+        {/* Payment Details */}
         <div className="bg-white rounded-2xl shadow-md p-6">
           <div className="flex items-center gap-2 mb-4">
             <CreditCard className="text-purple-600 w-6 h-6" />
@@ -83,7 +89,6 @@ export default function DoctorDashboardPage() {
           </div>
 
           <div className="space-y-3 text-sm text-gray-700">
-            {/* Same payment detail code */}
             <div className="flex justify-between"><span>Last Payment</span><span>24 July 2025</span></div>
             <div className="flex justify-between"><span>Total Earnings</span><span className="font-semibold text-green-600">₹12,500</span></div>
             <div className="flex justify-between"><span>Pending Amount</span><span className="font-semibold text-red-500">₹2,000</span></div>
@@ -94,8 +99,11 @@ export default function DoctorDashboardPage() {
             <div className="flex justify-between"><span>Tax Deducted</span><span className="text-yellow-600">₹1,200</span></div>
           </div>
         </div>
-      </main>
+ 
+
+     
     </div>
   );
 }
+
 

@@ -2,11 +2,11 @@
 import { NextResponse } from 'next/server';
 
 const doctorProfile = {
-  name: 'Dr. Irfan Ahmad',
+  name: 'Dr. Anil Kumar Gupta',
   specialization: 'Cardiologist',
   education: 'MBBS, MD (Cardiology)',
   experience: '12+ years',
-  email: 'sameer.verma@example.com',
+  email: 'Anil@example.com',
   phone: '+91-9876543210',
   image: '/doctor.jpg',
 };
