@@ -7,14 +7,17 @@ import {
   Views,
   Event as RBCEvent,
 } from 'react-big-calendar';
+import type { View } from 'react-big-calendar'; 
 import withDragAndDrop, {
   withDragAndDropProps,
   EventInteractionArgs,
 } from 'react-big-calendar/lib/addons/dragAndDrop';
 import moment from 'moment';
 
+
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
+
 
 const localizer = momentLocalizer(moment);
 const DnDCalendar = withDragAndDrop<CalendarEvent>(Calendar);
@@ -37,7 +40,8 @@ interface CalendarEvent {
 
 export default function DoctorCalendar() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
-  const [currentView, setCurrentView] = useState<Views>('week');
+  const [currentView, setCurrentView] = useState<View>('week'); 
+
   const [currentDate, setCurrentDate] = useState<Date>(new Date());
 
   useEffect(() => {
@@ -107,7 +111,7 @@ export default function DoctorCalendar() {
   );
 
   // Tab views
-  const viewTabs = ['day', 'week', 'month'] as Views[];
+  const viewTabs = ['day', 'week', 'month'] as View[];
 
   // Back and Next navigation
   const handleNavigate = (action: 'NEXT' | 'PREV') => {
