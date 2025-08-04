@@ -1,11 +1,7 @@
-// src/app/api/appointments/[id]/route.ts
-
 import { NextRequest, NextResponse } from 'next/server'
 
-export async function PUT(
-  req: NextRequest,
-  context: any // ✅ IMPORTANT: Use `any` here for Vercel compatibility
-) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function PUT(req: NextRequest, context: any) {
   const { params } = context
   const body = await req.json()
 
@@ -14,10 +10,8 @@ export async function PUT(
   return NextResponse.json({ message: 'Appointment updated (mock)', body })
 }
 
-export async function DELETE(
-  req: NextRequest,
-  context: any // ✅ Use `any` here too
-) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function DELETE(req: NextRequest, context: any) {
   const { params } = context
 
   console.log(`Deleting appointment ${params.id}`)
