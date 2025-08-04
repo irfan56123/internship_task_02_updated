@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function PUT(
   req: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = context.params
   const body = await req.json()
+  const { id } = params
 
   console.log(`Updating appointment ${id}`, body)
 
@@ -15,9 +15,9 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = context.params
+  const { id } = params
 
   console.log(`Deleting appointment ${id}`)
 
