@@ -5,6 +5,8 @@ import AppointmentCard from '../../../components/appointmentCard';
 import DoctorCalendar from '../../../components/DoctorCalendar';
 import { CalendarDays, CreditCard, AlarmClock, ClipboardList } from 'lucide-react';
 
+
+
 interface Appointment {
   patientName: string;
   reason: string;
@@ -32,6 +34,7 @@ export default function DoctorDashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+     
       {/* Dashboard Heading */}
       <div className="px-6 py-8">
         <h1 className="text-3xl font-bold text-gray-800">👨‍⚕️ Doctor Dashboard</h1>
@@ -64,10 +67,12 @@ export default function DoctorDashboardPage() {
           </div>
         </div>
              </main>
+               
+              
       {/* Calendar Section */}
       <div className="bg-white rounded-2xl shadow-md p-6 mt-6">
         <h2 className="text-xl font-semibold text-gray-800 mb-4">📆 Calendar View</h2>
-        <DoctorCalendar />
+          <DoctorCalendar />
       </div>
         {/* Appointments Section */}
         <div className="lg:col-span-2">

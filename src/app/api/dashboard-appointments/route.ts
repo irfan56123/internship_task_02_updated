@@ -23,6 +23,13 @@ const dashboardAppointments = [
     time: '2:00 PM',
     status: 'cancelled',
   },
+  {
+    patientName: 'Suraj Roy',
+    reason: 'General checkup',
+    date: '2025-07-26',
+    time: '2:00 PM',
+    status: 'cancelled',
+  },
 ];
 
 export async function GET() {

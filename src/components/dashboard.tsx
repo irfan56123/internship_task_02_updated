@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import LogoutButton from './logoutbutton';
 
+
+
 export default function DashboardLayout({
     
   children,
@@ -18,7 +20,7 @@ export default function DashboardLayout({
 
   return (
     <>
-    
+ 
       {showLogout && (
         <div className="w-full bg-white shadow px-6 py-4 flex justify-between items-center">
           <h1 className="text-lg font-bold">Doctor Dashboard</h1>

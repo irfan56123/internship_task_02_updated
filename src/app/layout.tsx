@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import DashboardLayout from "@/components/dashboard";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -19,11 +20,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
+    <>
+   
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -31,6 +36,7 @@ export default function RootLayout({
         <DashboardLayout>{children}</DashboardLayout>
       </body>
     </html>
+    </>
   );
 }
 

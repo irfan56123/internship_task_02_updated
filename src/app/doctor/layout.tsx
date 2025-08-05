@@ -6,6 +6,7 @@ import { Menu, X, LayoutDashboard, User, CalendarCheck, Users, LogOut } from 'lu
 import { Disclosure } from '@headlessui/react';
 import LogoutButton from '../../components/logoutbutton';
 
+
 const navigation = [
   { name: 'Dashboard', href: '/doctor/dashboard', icon: <LayoutDashboard className="w-5 h-5 mr-2" /> },
   { name: 'Profile', href: '/doctor/profile', icon: <User className="w-5 h-5 mr-2" /> },
@@ -15,8 +16,12 @@ const navigation = [
 
 export default function DoctorLayout({ children }: { children: ReactNode }) {
   return (
+    <>
+    
+
     <div className="min-h-screen flex flex-col lg:flex-row">
       {/* Sidebar for Desktop */}
+
       <aside className="hidden lg:flex lg:flex-col w-64 bg-blue-900 text-white min-h-screen px-6 py-8">
         <div className="mb-10">
           <h2 className="text-2xl font-bold">Dr. Portal</h2>
@@ -71,6 +76,7 @@ export default function DoctorLayout({ children }: { children: ReactNode }) {
       {/* Page Content */}
       <main className="flex-1 bg-gray-50 px-4 py-6">{children}</main>
     </div>
+    </>
   );
 }
 
