@@ -2,11 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { Calendar, momentLocalizer, Event as CalendarEvent } from 'react-big-calendar';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import moment from 'moment';
 import Modal from 'react-modal';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css';
 
 const localizer = momentLocalizer(moment);
+const DnDCalendar = withDragAndDrop<AppointmentEvent>(Calendar);
 
 interface AppointmentEvent extends CalendarEvent {
   id: string;
@@ -66,15 +69,24 @@ export default function DoctorCalendar() {
     closeModal();
   };
 
+  const moveEvent = ({ event, start, end }: { event: AppointmentEvent; start: Date; end: Date }) => {
+    const updated = appointments.map((apt) =>
+      apt.id === event.id ? { ...apt, start, end } : apt
+    );
+    setAppointments(updated);
+  };
+
   return (
     <div className="p-4">
-      <Calendar
+      <DnDCalendar
         localizer={localizer}
         events={appointments}
         startAccessor="start"
         endAccessor="end"
         style={{ height: 500 }}
         onSelectEvent={(event) => openModal(event as AppointmentEvent)}
+        onEventDrop={moveEvent}
+        draggableAccessor={() => true}
         eventPropGetter={(event) => {
           let backgroundColor = '#3182ce'; // default blue
           if (event.status === 'accept') backgroundColor = 'green';
@@ -126,6 +138,7 @@ export default function DoctorCalendar() {
     </div>
   );
 }
+
 
 
 

@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { Menu, X, LayoutDashboard, User, CalendarCheck, Users, LogOut } from 'lucide-react';
 import { Disclosure } from '@headlessui/react';
 import LogoutButton from '../../components/logoutbutton';
+import { FaPrescriptionBottleAlt } from 'react-icons/fa';
+
 
 
 const navigation = [
@@ -12,6 +14,8 @@ const navigation = [
   { name: 'Profile', href: '/doctor/profile', icon: <User className="w-5 h-5 mr-2" /> },
   { name: 'Appointments', href: '/doctor/appointments', icon: <CalendarCheck className="w-5 h-5 mr-2" /> },
   { name: 'Patients', href: '/doctor/patients', icon: <Users className="w-5 h-5 mr-2" /> },
+    { name: 'Prescriptions', href: '/doctor/prescriptions',icon: <FaPrescriptionBottleAlt className="w-5 h-5 mr-2 text-white" />
+ },
 ];
 
 export default function DoctorLayout({ children }: { children: ReactNode }) {
