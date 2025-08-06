@@ -1,7 +1,7 @@
 // File: src/app/api/prescriptions/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 
-let prescriptions = [
+const prescriptions = [
   {
     id: '1',
     patient: 'John Doe',

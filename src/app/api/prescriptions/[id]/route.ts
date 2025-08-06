@@ -1,4 +1,4 @@
-let prescriptions = [
+const prescriptions = [
   {
     id: '1',
     patient: 'John Doe',
