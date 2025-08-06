@@ -69,12 +69,21 @@ export default function DoctorCalendar() {
     closeModal();
   };
 
-  const moveEvent = ({ event, start, end }: { event: AppointmentEvent; start: Date; end: Date }) => {
-    const updated = appointments.map((apt) =>
-      apt.id === event.id ? { ...apt, start, end } : apt
-    );
-    setAppointments(updated);
-  };
+  const moveEvent = ({
+  event,
+  start,
+  end,
+}: {
+  event: AppointmentEvent;
+  start: Date | string;
+  end: Date | string;
+}) => {
+  const updated = appointments.map((apt) =>
+    apt.id === event.id ? { ...apt, start: new Date(start), end: new Date(end) } : apt
+  );
+  setAppointments(updated);
+};
+
 
   return (
     <div className="p-4">
