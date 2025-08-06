@@ -21,7 +21,13 @@ const prescriptions = [
   },
 ];
 
-export async function PUT(req: NextRequest, context: { params: { id: string } }) {
+interface Context {
+  params: {
+    id: string;
+  };
+}
+
+export async function PUT(req: NextRequest, context: Context): Promise<Response> {
   const { id } = context.params;
   const body = await req.json();
 
@@ -30,7 +36,6 @@ export async function PUT(req: NextRequest, context: { params: { id: string } })
     return new Response(JSON.stringify({ error: 'Prescription not found' }), { status: 404 });
   }
 
-  // Merge existing prescription with updated data
   prescriptions[index] = { ...prescriptions[index], ...body };
 
   return new Response(JSON.stringify(prescriptions[index]), { status: 200 });
