@@ -17,6 +17,7 @@ export default function PrescriptionList() {
   const [prescriptions, setPrescriptions] = useState<Prescription[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<Prescription>>({});
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     setPrescriptions([
@@ -38,6 +39,70 @@ export default function PrescriptionList() {
         duration: '3 days',
         notes: 'Before sleep',
       },
+        {
+        id: '3',
+        patient: 'Rohit Shethi',
+        appointmentId: 'A3',
+        medicine: 'Paracetamol',
+        dosage: '500mg',
+        duration: '5 days',
+        notes: 'After meals',
+      },
+      {
+        id: '4',
+        patient: 'Neha singh',
+        appointmentId: 'A4',
+        medicine: 'Ibuprofen',
+        dosage: '200mg',
+        duration: '3 days',
+        notes: 'Before sleep',
+      },
+        {
+        id: '5',
+        patient: 'Haniya Aamir',
+        appointmentId: 'A5',
+        medicine: 'Paracetamol',
+        dosage: '500mg',
+        duration: '5 days',
+        notes: 'After meals',
+      },
+      {
+        id: '6',
+        patient: 'Sidharth malohtra',
+        appointmentId: 'A6',
+        medicine: 'Ibuprofen',
+        dosage: '200mg',
+        duration: '3 days',
+        notes: 'Before sleep',
+      },
+        {
+        id: '7',
+        patient: 'Khoosboo sidiquie',
+        appointmentId: 'A7',
+        medicine: 'Paracetamol',
+        dosage: '500mg',
+        duration: '5 days',
+        notes: 'After meals',
+      },
+      {
+        id: '8',
+        patient: 'Soniya sekhawat',
+        appointmentId: 'A8',
+        medicine: 'Ibuprofen',
+        dosage: '200mg',
+        duration: '3 days',
+        notes: 'Before sleep',
+      },
+        {
+        id: '9',
+        patient: 'Mohan mane',
+        appointmentId: 'A9',
+        medicine: 'Paracetamol',
+        dosage: '500mg',
+        duration: '5 days',
+        notes: 'After meals',
+      },
+    
     ]);
   }, []);
 
@@ -61,22 +126,37 @@ export default function PrescriptionList() {
     setEditForm({});
   };
 
+  const filteredPrescriptions = prescriptions.filter(p =>
+    p.patient.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="p-6 max-w-4xl mx-auto font-sans">
       {/* Header */}
-      {/* <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl p-6 shadow-lg mb-6 text-center">
-        <h2 className="text-3xl font-bold">Prescription Management</h2>
-        <p className="text-sm mt-1">Manage all patient prescriptions here</p>
-      </div> */}
-
-      {/* Form Card */}
-      <div >
-        <PrescriptionForm onAdd={(newP) => setPrescriptions([...prescriptions, newP])} />
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-blue-700">Prescription Management </h1>
       </div>
 
-      {/* Prescription Cards */}
-      <div className=" max-w-xl mx-auto grid gap-6 mt-4">
-        {prescriptions.map((p) => (
+      {/* Search Box */}
+      <div className="mb-4">
+        <input
+          type="text"
+          placeholder="Search by patient name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="border border-gray-300 rounded px-4 py-2 w-full max-w-md shadow-sm"
+        />
+      </div>
+
+     
+
+      {/* Prescriptions */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
+        {filteredPrescriptions.length === 0 && (
+          <p className="text-gray-500">No prescriptions found.</p>
+        )}
+
+        {filteredPrescriptions.map((p) => (
           <div
             key={p.id}
             className="bg-white rounded-xl p-5 border border-blue-100 shadow-md hover:shadow-lg transition duration-200"
@@ -151,6 +231,10 @@ export default function PrescriptionList() {
             )}
           </div>
         ))}
+      </div>
+       {/* Form */}
+       <div>
+        <PrescriptionForm onAdd={(newP) => setPrescriptions([...prescriptions, newP])} />
       </div>
     </div>
   );

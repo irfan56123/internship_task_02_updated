@@ -42,7 +42,7 @@ export default function PrescriptionForm({ onAdd }: Props) {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-2 shadow-xl rounded-xl overflow-hidden border border-blue-300">
+    <div className="max-w-xl mx-auto mt-4 shadow-xl rounded-xl overflow-hidden border border-blue-300">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-center py-4">
         <h2 className="text-2xl font-bold">📝 Add New Prescription</h2>

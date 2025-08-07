@@ -6,6 +6,7 @@ import PrescriptionList from '../../../components/PrescriptionList';
 export default function PrescriptionPage() {
   return (
     <div className="">
+     
       
       <PrescriptionList />
     </div>
