@@ -52,6 +52,7 @@ export default function AppointmentCard({
       onClick={() => console.log("Clicked appointment:", patientName)}
     >
       <div className="flex justify-between items-start">
+        
         <div>
           <h3 className="text-xl font-bold text-gray-800 group-hover:text-blue-600">
             {patientName}

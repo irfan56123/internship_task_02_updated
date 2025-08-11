@@ -1,5 +1,5 @@
 'use client';
-
+import Link from "next/link";
 import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import { UserCircle2, CalendarDays } from 'lucide-react';
@@ -163,6 +163,13 @@ export default function PatientsPage() {
                 </div>
 
                 <p className="text-sm text-gray-600 mb-1">📞 {patient.contact}</p>
+                
+<Link 
+  href={`/doctor/patients/${patient.id}/medical-history`}
+  className="text-blue-600 hover:underline"
+>
+  View Medical History
+</Link>
 
                 <div className="flex items-center text-sm gap-2 mt-3">
                   <CalendarDays className="w-4 h-4 text-gray-500" />
