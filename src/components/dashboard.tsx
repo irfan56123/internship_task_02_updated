@@ -22,8 +22,8 @@ export default function DashboardLayout({
     <>
  
       {showLogout && (
-        <div className="w-full bg-white shadow px-6 py-4 flex justify-between items-center">
-          <h1 className="text-lg font-bold">Doctor Dashboard</h1>
+        <div className="w-full bg-blue-800 shadow px-6 py-4 flex justify-between items-center">
+          <h1 className="text-lg font-bold text-white">Doctor Dashboard</h1>
          
             <div className="flex items-center space-x-3">
     <img
@@ -32,8 +32,8 @@ export default function DashboardLayout({
       className="w-10 h-10 rounded-full border"
     />
     <div className="text-right">
-      <p className="text-sm font-medium text-gray-800">Dr. Anil Kumar Gupta</p>
-      <p className="text-xs text-gray-500">Cardiologist</p>
+      <p className="text-sm font-medium text-white">Dr. Anil Kumar Gupta</p>
+      <p className="text-xs text-white">Cardiologist</p>
     </div>
   
  <LogoutButton/>
