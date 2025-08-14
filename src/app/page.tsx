@@ -7,13 +7,16 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col bg-white text-gray-800">
       {/* Navbar */}
       <nav className="flex justify-between items-center px-8 py-4 bg-blue-600 text-white shadow-md">
-        <h2 className="text-2xl font-bold">Doctor Onboarding</h2>
+        <h2 className="text-2xl font-bold">Patient & Doctor Portal</h2>
         <div className="flex gap-6">
           <Link href="/login" className="hover:text-blue-200 transition">
-            Login
+            Doctor Login
           </Link>
-          <Link href="/signup" className="hover:text-blue-200 transition">
-            Sign Up
+          <Link
+            href="https://internship-patient-task-t33j.vercel.app/login"
+            className="hover:text-blue-200 transition"
+          >
+            Patient Login
           </Link>
         </div>
       </nav>
@@ -23,24 +26,26 @@ export default function HomePage() {
         {/* Text Content */}
         <div className="max-w-xl">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-blue-600">
-            Manage Your Practice Effortlessly
+            One Platform for Patients & Doctors
           </h1>
           <p className="text-lg md:text-xl mb-8 text-gray-700">
-            A secure and modern platform for doctors to manage appointments,
-            patient records, and prescriptions — all in one place.
+            A secure and modern healthcare management system where patients can
+            easily book appointments and manage their medical records, while
+            doctors can handle schedules, patient details, salaries, and
+            prescriptions — all in one place.
           </p>
           <div className="flex gap-4">
             <Link
-              href="/signup"
+              href="https://internship-patient-task-t33j.vercel.app/login"
               className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition"
             >
-              Get Started
+              Patient Login
             </Link>
             <Link
               href="/login"
-              className="px-6 py-3 bg-white border border-blue-600 text-blue-600 rounded-xl shadow-md hover:bg-blue-50 transition"
+              className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition"
             >
-              Login
+              Doctor Login
             </Link>
           </div>
         </div>
@@ -63,35 +68,33 @@ export default function HomePage() {
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition border border-blue-100">
             <h3 className="text-xl font-semibold mb-4 text-blue-600">
-              Appointments
+              Easy Appointment Booking
             </h3>
             <p className="text-gray-700">
-              Schedule, track, and manage appointments effortlessly.
+              Patients can book, reschedule, or cancel appointments with just a
+              few clicks. Doctors can manage their daily schedules efficiently.
             </p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition border border-blue-100">
             <h3 className="text-xl font-semibold mb-4 text-blue-600">
-              Patients
+              Complete Patient Management
             </h3>
             <p className="text-gray-700">
-              Access complete patient history and medical records.
+              Doctors get access to full patient medical history, prescriptions,
+              and visit records for better treatment decisions.
             </p>
           </div>
           <div className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition border border-blue-100">
             <h3 className="text-xl font-semibold mb-4 text-blue-600">
-              Prescriptions
+              Billing & Salary Tracking
             </h3>
             <p className="text-gray-700">
-              Create, store, and manage prescriptions digitally.
+              Automated billing for patients and salary management for doctors,
+              keeping finances transparent and hassle-free.
             </p>
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-6 text-center text-white bg-blue-600 ">
-        © {new Date().getFullYear()} Doctor Onboarding Platform
-      </footer>
     </div>
   );
 }

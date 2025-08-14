@@ -6,6 +6,7 @@ import { Menu, X, LayoutDashboard, User, CalendarCheck, Users, LogOut } from 'lu
 import { Disclosure } from '@headlessui/react';
 import LogoutButton from '../../components/logoutbutton';
 import { FaPrescriptionBottleAlt } from 'react-icons/fa';
+import { FaComments } from "react-icons/fa";
 
 
 
@@ -15,6 +16,8 @@ const navigation = [
   { name: 'Appointments', href: '/doctor/appointments', icon: <CalendarCheck className="w-5 h-5 mr-2" /> },
   { name: 'Patients', href: '/doctor/patients', icon: <Users className="w-5 h-5 mr-2" /> },
     { name: 'Prescriptions', href: '/doctor/prescriptions',icon: <FaPrescriptionBottleAlt className="w-5 h-5 mr-2 text-white" />
+ },
+   { name: 'Reviews', href: '/doctor/reviews',  icon: <FaComments className="w-5 h-5 mr-2 text-white" /> 
  },
 ];
 
